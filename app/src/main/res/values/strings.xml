@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Cabinet</string>
+    <string name="hello_world">Juan Daniel Castillo Reyes</string>
+    <string name="action_settings">Settings</string>
+    <string name="btnInicio2">Entrar</string>
+    <string name="home">Home</string>
+    <string name="title_activity_cabinet_tour">CabinetTour</string>
+    <string name="title_activity_cabient_profile">CabientProfile</string>
+    <string name="title_activity_cabinet_alta">CabinetAlta</string>
+    <string name="title_activity_emergencia">Emergencia</string>
+    <string name="title_activity_cabinet_alta_contacto">CabinetAltaContacto</string>
+</resources>

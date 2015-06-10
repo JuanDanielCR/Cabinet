@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.juandaniel.cabinet" >
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MODE_WORLD_READABLE" />
+    <uses-permission android:name="android.permission.MODE_WORLD_WRITABLE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <service android:name=".ServicioMedicamentos" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".home"
+            android:label="@string/home" >
+        </activity>
+        <activity
+            android:name=".CabinetTour"
+            android:label="@string/title_activity_cabinet_tour" >
+        </activity>
+        <activity
+            android:name=".CabientProfile"
+            android:label="@string/title_activity_cabient_profile" >
+        </activity>
+        <activity
+            android:name=".CabinetAlta"
+            android:label="@string/title_activity_cabinet_alta" >
+        </activity>
+        <activity
+            android:name=".Emergencia"
+            android:label="@string/title_activity_emergencia" >
+        </activity>
+        <activity
+            android:name=".CabinetAltaContacto"
+            android:label="@string/title_activity_cabinet_alta_contacto" >
+        </activity>
+    </application>
+
+</manifest>
