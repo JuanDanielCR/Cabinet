@@ -23,7 +23,8 @@
             android:scaleType="centerCrop"
             android:src="@drawable/user"
             android:id="@+id/imageView3" />
-    <TextView
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -31,8 +32,16 @@
         android:textColor="@color/primary"
         android:textSize="18dp"
         android:layout_marginTop="10dp"
-        android:text="+ Usuarios"
+        android:text="Usuarios"
         android:id="@+id/textView3" />
+
+        <ImageView
+
+            android:id="@+id/imageView9"
+            android:src="@drawable/adding"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal" />
 
         <EditText
         android:layout_width="match_parent"

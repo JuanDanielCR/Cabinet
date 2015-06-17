@@ -2,20 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    >
+    android:id="@+id/layoutcito">
+
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/cont"
+        android:layout_marginTop="10dp"
+        android:id="@+id/imageView8"
+        android:layout_gravity="center_horizontal" />
+
+    <com.example.juandaniel.cabinet.FButton
+        fbutton:buttonColor="@color/fbutton_color_emerald"
+        fbutton:shadowColor="@color/fbutton_color_nephritis"
+        fbutton:shadowEnabled="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        fbutton:shadowHeight="6dp"
+        fbutton:paddingEnd="15dp"
+        fbutton:paddingStart="15dp"
+        fbutton:cornerRadius="5dp"
+        android:textColor="@color/fbutton_color_clouds"
+        android:text="Agregar Contacto"
+        android:onClick="AgregarContacto"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_gravity="center_horizontal" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tab Contactos"
+        android:text="Contactos Registrados"
+        android:textSize="18dp"
+        android:layout_marginLeft="15dp"
         android:id="@+id/datos2" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar Contacto"
-        android:onClick="AgregarContacto"
-        android:id="@+id/btnRegistro" />
+        android:layout_weight="0.17"
+        android:id="@+id/lista"/>
+
 
 </LinearLayout>

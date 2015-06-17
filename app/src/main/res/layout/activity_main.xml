@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -20,43 +21,67 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true" />
 
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/darks"
+    <com.example.juandaniel.cabinet.FButton
+        fbutton:buttonColor="@color/fbutton_color_alizarin"
+        fbutton:shadowColor="@color/fbutton_color_pomegranate"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="6dp"
+        fbutton:paddingEnd="15dp"
+        fbutton:paddingStart="15dp"
+        fbutton:cornerRadius="5dp"
+        android:onClick="Emergencia"
         android:textColor="@color/white"
         android:textSize="16dp"
-        android:text="Emergencia"
-        android:layout_marginBottom="61dp"
-        android:id="@+id/btnAlerta"
-        android:onClick="Emergencia"
+        android:text="Boton de Pánico"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_marginBottom="46dp"
+        android:id="@+id/button2" />
 
-    <Button
+
+    <com.example.juandaniel.cabinet.FButton
+        fbutton:buttonColor="@color/fbutton_color_wet_asphalt"
+        fbutton:shadowColor="@color/fbutton_color_midnight_blue"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="6dp"
+        fbutton:paddingEnd="15dp"
+        fbutton:paddingStart="15dp"
+        fbutton:cornerRadius="5dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Cabinet Tour"
-        android:background="@color/blue1"
         android:textColor="@color/white"
         android:textSize="16dp"
         android:id="@+id/btnTour"
-        android:layout_marginBottom="20dp"
-        android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
 
-    <Button
+    <com.example.juandaniel.cabinet.FButton
+        fbutton:buttonColor="@color/blue1"
+        fbutton:shadowColor="@color/blueligth"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="6dp"
+        fbutton:paddingEnd="15dp"
+        fbutton:paddingStart="15dp"
+        fbutton:cornerRadius="5dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Ingresar"
-        android:background="@color/blueligth"
         android:textColor="@color/white"
         android:textSize="16dp"
         android:id="@+id/button"
         android:layout_marginBottom="20dp"
-        android:layout_above="@+id/btnAlerta"
-        android:layout_centerHorizontal="true"
-        android:onClick="Iniciar" />
+        android:onClick="Iniciar"
+        android:layout_above="@+id/btnTour"
+        android:layout_centerHorizontal="true" />
+
+
 
     <TextView
         android:layout_width="match_parent"

@@ -29,4 +29,16 @@ public class home extends ActionBarActivity {
         Intent personas= new Intent(this,CabientProfile.class);
         startActivity(personas);
     }
+    public void Receta(View view){
+        Intent personas= new Intent(this,RecetaHome.class);
+        startActivity(personas);
+    }
+    public void Sac(View view){
+        Intent personas= new Intent(this,SacHome.class);
+        startActivity(personas);
+    }
+    public void Ayuda(View view){
+        Intent personas= new Intent(this,Emergencia.class);
+        startActivity(personas);
+    }
 }

@@ -50,6 +50,58 @@
             android:name=".CabinetAltaContacto"
             android:label="@string/title_activity_cabinet_alta_contacto" >
         </activity>
+        <activity
+            android:name=".RecetaHome"
+            android:label="@string/title_activity_receta_home" >
+        </activity>
+        <activity
+            android:name=".SacHome"
+            android:label="@string/title_activity_sac_home" >
+        </activity>
+        <activity
+            android:name=".usuarioPerfil"
+            android:label="@string/title_activity_usuario_perfil" >
+        </activity>
+        <activity
+            android:name=".contactoPerfil"
+            android:label="@string/title_activity_contacto_perfil" >
+        </activity>
+        <activity
+            android:name=".mis_recetass"
+            android:label="@string/title_activity_mis_recetass" >
+        </activity>
+        <activity
+            android:name=".mis_recetas"
+            android:label="@string/title_activity_mis_recetas" >
+        </activity>
+        <activity
+            android:name=".RecetaAlta"
+            android:label="@string/title_activity_receta_alta" >
+        </activity>
+        <activity
+            android:name=".recetaPerfil"
+            android:label="@string/title_activity_receta_perfil" >
+        </activity>
+        <activity
+            android:name=".activacionReceta"
+            android:label="@string/title_activity_activacion_receta" >
+        </activity>
+        <activity
+            android:name=".asociarReceta"
+            android:label="@string/title_activity_asociar_receta" >
+        </activity>
+        <activity
+            android:name=".MedicamentoAlta"
+            android:label="@string/title_activity_medicamento_alta" >
+        </activity>
+        <activity
+            android:name=".horarioAlta"
+            android:label="@string/title_activity_horario_alta" >
+        </activity>
+        <activity
+            android:name=".medicaPerfil"
+            android:label="@string/title_activity_medica_perfil" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,202 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.juandaniel.cabinet.usuarioPerfil">
+
+    <include layout="@layout/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/my_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/imageView12"
+        android:src="@drawable/family"
+        android:layout_gravity="center_horizontal" />
+
+
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/fbutton_color_emerald"
+            fbutton:shadowColor="@color/fbutton_color_nephritis"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:onClick="AgregarUsuarioVolver"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="AGREGAR USUARIO"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="192dp"
+            android:id="@+id/view2"
+            android:layout_gravity="center_horizontal" />
+
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/fbutton_color_alizarin"
+            fbutton:shadowColor="@color/fbutton_color_pomegranate"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="BORRAR USUARIO"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="182dp"
+            android:layout_marginTop="20dp"
+            android:layout_above="@+id/textView10"
+            android:layout_alignRight="@+id/textView10"
+            android:layout_alignEnd="@+id/textView10"
+            android:onClick="BorrarUsuario"
+            android:layout_gravity="center_horizontal" />
+
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/fbutton_color_orange"
+            fbutton:shadowColor="@color/fbutton_color_carrot"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="MODIFICAR DATOS"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="182dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@+id/textView10"
+            android:layout_alignRight="@+id/textView10"
+            android:layout_alignEnd="@+id/textView10"
+            android:layout_gravity="center_horizontal"
+            android:onClick="ModificarUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Datos del Usuario  "
+        android:id="@+id/recibo"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Datos Personales"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+
+        android:id="@+id/recibod" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Nombre: "
+        android:id="@+id/textView14" />
+
+    <EditText
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/nombrerecibo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Apellido Paterno"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/paterno" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/recibopaterno" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Apellido Materno"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/materno" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/recibomaterno" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Edad"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/sexo" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/edadrecibo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Sexo"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/sexos" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M/F"
+            android:id="@+id/sexorecibo"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+  </ScrollView>
+
+
+
+
+</LinearLayout>

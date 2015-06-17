@@ -44,7 +44,6 @@ public class CabientProfile extends ActionBarActivity {
 
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
-
     }
 
     public void setToolbar(){
@@ -52,7 +51,7 @@ public class CabientProfile extends ActionBarActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setTitle("CABINET");
         toolbar.setSubtitleTextColor(Color.WHITE);
-        toolbar.setSubtitle("Mis Circulos");
+        toolbar.setSubtitle("Mis Círculos");
         toolbar.setLogo(R.mipmap.logo);
         setSupportActionBar(toolbar);
     }
@@ -64,4 +63,5 @@ public class CabientProfile extends ActionBarActivity {
         Intent inicio= new Intent(this ,CabinetAltaContacto.class);
         startActivity(inicio);
     }
+
 }

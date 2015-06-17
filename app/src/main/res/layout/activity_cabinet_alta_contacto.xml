@@ -33,8 +33,15 @@
                 android:textColor="@color/primary"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"
-                android:text="+ Contactos"
+                android:text="Contactos"
                 android:id="@+id/textView3" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/adding"
+                android:id="@+id/imageView10"
+                android:layout_gravity="center_horizontal" />
 
             <EditText
                 android:layout_width="match_parent"

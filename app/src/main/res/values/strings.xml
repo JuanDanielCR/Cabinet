@@ -9,4 +9,17 @@
     <string name="title_activity_cabinet_alta">CabinetAlta</string>
     <string name="title_activity_emergencia">Emergencia</string>
     <string name="title_activity_cabinet_alta_contacto">CabinetAltaContacto</string>
+    <string name="title_activity_receta_home">RecetaHome</string>
+    <string name="title_activity_sac_home">SacHome</string>
+    <string name="title_activity_usuario_perfil">usuarioPerfil</string>
+    <string name="title_activity_contacto_perfil">contactoPerfil</string>
+    <string name="title_activity_mis_recetass">mis_recetass</string>
+    <string name="title_activity_mis_recetas">mis_recetas</string>
+    <string name="title_activity_receta_alta">RecetaAlta</string>
+    <string name="title_activity_receta_perfil">recetaPerfil</string>
+    <string name="title_activity_activacion_receta">activacionReceta</string>
+    <string name="title_activity_asociar_receta">asociarReceta</string>
+    <string name="title_activity_medicamento_alta">MedicamentoAlta</string>
+    <string name="title_activity_horario_alta">horarioAlta</string>
+    <string name="title_activity_medica_perfil">medicaPerfil</string>
 </resources>

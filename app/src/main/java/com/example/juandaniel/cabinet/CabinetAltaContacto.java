@@ -18,10 +18,10 @@ public class CabinetAltaContacto extends ActionBarActivity {
     String name;
     String paterno;
     String materno;
-    int telefono;
+    long telefono=0;
     int estado=1;
     String correo;
-    int prioridad;
+    int prioridad=0;
     EditText nombre,papa,mama,phone,mail;
     RatingBar priority;
 
@@ -48,12 +48,12 @@ public class CabinetAltaContacto extends ActionBarActivity {
         setSupportActionBar(toolbar);
     }
     public void AgregarContactoDB(View view){
-        SQL sql = new SQL(this,"CabinetDB", null, 1);
+        SQL sql = new SQL(this,"CabinetDB", null, 4);
         final SQLiteDatabase db = sql.getWritableDatabase();
         name=nombre.getText().toString();
         paterno=papa.getText().toString();
         materno=mama.getText().toString();
-        telefono=Integer.parseInt(phone.getText().toString());
+        telefono=Long.parseLong(phone.getText().toString());
         correo=mail.getText().toString();
         prioridad= (int) priority.getRating();
 

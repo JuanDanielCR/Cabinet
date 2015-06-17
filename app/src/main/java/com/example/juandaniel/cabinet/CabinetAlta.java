@@ -17,7 +17,7 @@ public class CabinetAlta extends ActionBarActivity {
     String name;
     String paterno;
     String materno;
-    int edad;
+    int edad=0;
     String sexo;
     int estado=1;
     EditText nombre,papa,mama,años;
@@ -39,7 +39,7 @@ public class CabinetAlta extends ActionBarActivity {
     }
     public void AgregarUsuarioDB(View view){
 
-	    SQL sql = new SQL(this,"CabinetDB", null, 1);
+	    SQL sql = new SQL(this,"CabinetDB", null, 4);
 	    final SQLiteDatabase db = sql.getWritableDatabase();
             name=nombre.getText().toString();
             paterno=papa.getText().toString();

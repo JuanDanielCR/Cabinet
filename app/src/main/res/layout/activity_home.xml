@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.example.juandaniel.cabinet.home">
 
@@ -9,13 +10,265 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/my_toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Perfil"
-        android:id="@+id/btnPersonas"
-        android:layout_gravity="center_horizontal"
-        android:onClick="Perfil" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+        android:layout_height="150dp"
+        android:background="@color/white">
 
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/primary"
+            fbutton:shadowColor="@color/fbutton_color_midnight_blue"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:onClick="Perfil"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="Ingresar"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary"
+            android:textSize="35dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="PERFIL"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView5"
+            android:layout_alignTop="@+id/view"
+            android:layout_toRightOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/imageView4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Configura el perfil de tu aplicación.
+Agrega a tus amigos y familia..."
+            android:id="@+id/textView7"
+            android:textSize="16dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/view"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView4"
+            android:src="@drawable/perfil"
+            android:layout_marginLeft="25dp"
+            android:layout_above="@+id/textView7"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+        android:layout_height="150dp"
+        android:background="@color/white">
+
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/fbutton_color_emerald"
+            fbutton:shadowColor="@color/fbutton_color_nephritis"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:onClick="Receta"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="Ingresar"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/view2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fbutton_color_nephritis"
+            android:textSize="35dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="RECETAS"
+            android:id="@+id/textView52"
+            android:layout_alignBottom="@+id/view2"
+            android:layout_toRightOf="@+id/imageView5"
+            android:layout_toEndOf="@+id/imageView5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Organiza todos tus medicamentos, vitaminas, suplementos, etc."
+            android:id="@+id/textView8"
+            android:textSize="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentBottom="true" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView5"
+            android:src="@drawable/recertas"
+            android:layout_alignTop="@+id/view2"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/fbutton_color_nephritis"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+        android:layout_height="150dp"
+        android:background="@color/white">
+
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/fbutton_color_orange"
+            fbutton:shadowColor="@color/fbutton_color_carrot"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:onClick="Sac"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="SAC"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_alignTop="@+id/textView42"
+            android:layout_alignRight="@+id/textView9"
+            android:layout_alignEnd="@+id/textView9" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fbutton_color_carrot"
+            android:textSize="35dp"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="SAC"
+            android:id="@+id/textView42"
+            android:layout_alignBottom="@+id/imageView6"
+            android:layout_toRightOf="@+id/imageView6"
+            android:layout_toEndOf="@+id/imageView6" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Sincroniza la app con el Sistema SAC para obtener más servicios!"
+            android:id="@+id/textView9"
+            android:textSize="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentBottom="true" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView6"
+            android:src="@drawable/sac"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/fbutton_color_carrot"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+        android:layout_height="150dp"
+        android:background="@color/white">
+
+        <com.example.juandaniel.cabinet.FButton
+            fbutton:buttonColor="@color/fbutton_color_alizarin"
+            fbutton:shadowColor="@color/fbutton_color_pomegranate"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="6dp"
+            fbutton:paddingEnd="15dp"
+            fbutton:paddingStart="15dp"
+            fbutton:cornerRadius="5dp"
+            android:onClick="Ayuda"
+            android:textColor="@color/fbutton_color_clouds"
+            android:text="Botón Auxilio"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_above="@+id/textView10"
+            android:layout_alignRight="@+id/textView10"
+            android:layout_alignEnd="@+id/textView10" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fbutton_color_pomegranate"
+            android:textSize="35dp"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Auxilio"
+            android:id="@+id/textView43"
+            android:layout_alignBottom="@+id/imageView7"
+            android:layout_toRightOf="@+id/imageView7"
+            android:layout_toEndOf="@+id/imageView7" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Si tienes algún accidente, emergencia o corres peligro, mantén a tus contactos informados sin perder tiempo!"
+            android:id="@+id/textView10"
+            android:textSize="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentBottom="true" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView7"
+            android:src="@drawable/alarm"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
