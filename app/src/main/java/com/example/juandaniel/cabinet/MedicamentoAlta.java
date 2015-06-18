@@ -16,6 +16,7 @@ public class MedicamentoAlta extends ActionBarActivity {
 
     TextView nombre, dosis, via,frecuencia;
     String name,dosiz, viaz,frec,id_receta;
+    int numero;
     long id_medic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +42,19 @@ public class MedicamentoAlta extends ActionBarActivity {
         setSupportActionBar(toolbar);
     }
     public void AltaMedicamento(View v){
-        SQL sql = new SQL(this,"CabinetDB", null,4);
+        SQL sql = new SQL(this,"CabinetDB", null,8);
         final SQLiteDatabase db = sql.getWritableDatabase();
         name=nombre.getText().toString();
         dosiz=dosis.getText().toString();
         viaz=via.getText().toString();
         frec=frecuencia.getText().toString();
-
+        numero=Integer.parseInt(frec);
 
         ContentValues datos = new ContentValues();
         datos.put("medicamento", name);
         datos.put("dosis",dosiz);
         datos.put("via",viaz);
-
+        datos.put("numero",numero);
         if(db != null){
             try{
                 id_medic=db.insert("medicamentos", null, datos);

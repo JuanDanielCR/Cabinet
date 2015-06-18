@@ -37,7 +37,7 @@ public class adapterMedicamento extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return parametros.get(position).getId_receta();
+        return parametros.get(position).getid_medicamento();
     }
 
     @Override
@@ -51,17 +51,17 @@ public class adapterMedicamento extends BaseAdapter {
 
         receta_med item = parametros.get(position);
 
-        int id=item.getId_medicamento();
+        int id=item.getid_medicamento();
 
-        String id_s =String.valueOf(id);
+        String id_medica =String.valueOf(id);
         TextView nombre = (TextView) vi.findViewById(R.id.asocianombre);
         TextView dosis = (TextView) vi.findViewById(R.id.dosismedica);
 
-        SQL sql = new SQL(context,"CabinetDB", null, 4);
+        SQL sql = new SQL(context,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
 
         String[] campos = {"id_medicamento", "medicamento","dosis","via"};
-        Cursor selectAll = db.query("medicamentos", campos, "id_medicamento=?",new String[]{id_s}, null, null, null);
+        Cursor selectAll = db.query("medicamentos", campos, "id_medicamento=?",new String[]{id_medica}, null, null, null);
 
         int Total = selectAll.getCount();
         if(Total!=0) {
@@ -74,7 +74,7 @@ public class adapterMedicamento extends BaseAdapter {
         }
 
         TextView ids= (TextView)vi.findViewById(R.id.id_enviaasocia);
-        ids.setText(id_s);
+        ids.setText(id_medica);
         return vi;
     }
 }

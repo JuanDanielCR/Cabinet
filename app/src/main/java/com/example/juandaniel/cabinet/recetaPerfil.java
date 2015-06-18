@@ -81,6 +81,7 @@ public class recetaPerfil extends ActionBarActivity {
         envio.putString("id_receta",id);
         personas.putExtras(envio);
         startActivity(personas);
+        finish();
     }
     public void Medicamento(View view){
         Intent personas= new Intent(this,MedicamentoAlta.class);
@@ -88,5 +89,6 @@ public class recetaPerfil extends ActionBarActivity {
         envio.putString("id_receta",id);
         personas.putExtras(envio);
         startActivity(personas);
+        finish();
     }
 }

@@ -39,7 +39,7 @@ public class CabinetAlta extends ActionBarActivity {
     }
     public void AgregarUsuarioDB(View view){
 
-	    SQL sql = new SQL(this,"CabinetDB", null, 4);
+	    SQL sql = new SQL(this,"CabinetDB", null, 8);
 	    final SQLiteDatabase db = sql.getWritableDatabase();
             name=nombre.getText().toString();
             paterno=papa.getText().toString();

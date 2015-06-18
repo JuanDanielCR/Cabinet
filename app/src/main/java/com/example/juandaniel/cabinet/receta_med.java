@@ -7,11 +7,16 @@ public class receta_med {
     int id_medicamento;
     int id_receta;
 
-    public int getId_medicamento() {
+    public receta_med(int rec, int med){
+        this.id_medicamento=med;
+        this.id_receta=rec;
+    }
+
+    public int getid_medicamento() {
         return id_medicamento;
     }
 
-    public void setId_medicamento(int id_medicamento) {
+    public void setid_medicamento(int id_medicamento) {
         this.id_medicamento = id_medicamento;
     }
 
@@ -23,8 +28,4 @@ public class receta_med {
         this.id_receta = id_receta;
     }
 
-    public receta_med(int med, int rec){
-        this.id_medicamento=med;
-        this.id_receta=rec;
-    }
 }

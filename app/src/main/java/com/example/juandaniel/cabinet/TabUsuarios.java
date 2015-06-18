@@ -68,7 +68,7 @@ public class TabUsuarios extends Fragment {
     public ArrayList<receta_user> obteneritems(){
         ArrayList<receta_user> contacts = new ArrayList<>();
 
-        SQL sql = new SQL(context,"CabinetDB", null, 4);
+        SQL sql = new SQL(context,"CabinetDB", null, 8);
             final SQLiteDatabase db = sql.getReadableDatabase();
             String[] campos = {"id_receta", "id_usuario", "estado"};
 

@@ -29,11 +29,11 @@ public class ViewPagerAdapter2 extends FragmentStatePagerAdapter {
 
         if(position == 0) // if the position is 0 we are returning the First tab
         {
-            Bundle bundl = new Bundle();
-            bundl.putString("receta", id_receta);
+            Bundle bundle = new Bundle();
+            bundle.putString("receta", id_receta);
 
             TabUsuarios tab1 = new TabUsuarios();
-            tab1.setArguments(bundl);
+            tab1.setArguments(bundle);
             return tab1;
 
         }

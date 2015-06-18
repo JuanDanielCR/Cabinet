@@ -57,7 +57,7 @@ public class usuarioPerfil extends ActionBarActivity {
     }
 
     public void DatosUsuario(){
-        SQL sql = new SQL(this,"CabinetDB", null, 4);
+        SQL sql = new SQL(this,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_usuario","nombre", "paterno","materno","edad","sexo","estado"};
 
@@ -81,7 +81,7 @@ public class usuarioPerfil extends ActionBarActivity {
         }
 
         public void BorrarUsuario(View view){
-            SQL SQlite= new SQL(this,"CabinetDB",null,4);
+            SQL SQlite= new SQL(this,"CabinetDB",null,8);
             final SQLiteDatabase db= SQlite.getWritableDatabase();
 
             if(db != null) {
@@ -94,15 +94,17 @@ public class usuarioPerfil extends ActionBarActivity {
             }
             Intent inte= new Intent(this,CabientProfile.class);
             startActivity(inte);
+            finish();
         }
 
         public void AgregarUsuarioVolver(View v){
             Intent inicio= new Intent(this ,CabinetAlta.class);
             startActivity(inicio);
+            finish();
         }
 
         public void ModificarUsuario(View view){
-        SQL auxiliar= new SQL(this,"CabinetDB",null,4);
+        SQL auxiliar= new SQL(this,"CabinetDB",null,8);
         final SQLiteDatabase db=auxiliar.getWritableDatabase();
 
             String name=nombre.getText().toString();
@@ -128,5 +130,6 @@ public class usuarioPerfil extends ActionBarActivity {
             }
             Intent inte= new Intent(this,CabientProfile.class);
             startActivity(inte);
+            finish();
     }
 }

@@ -55,6 +55,7 @@ public class mis_recetas extends ActionBarActivity {
                 envio.putString("duracion_receta",time);
                 intent.putExtras(envio);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -71,10 +72,11 @@ public class mis_recetas extends ActionBarActivity {
     public void AgregarReceta(View v){
         Intent inicio= new Intent(this ,RecetaAlta.class);
         startActivity(inicio);
+        finish();
     }
     public ArrayList<receta> obtenerItems(){
         ArrayList<receta> items = new ArrayList<receta>();
-        SQL sql = new SQL(this,"CabinetDB", null, 4);
+        SQL sql = new SQL(this,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_receta","nombre", "duracion"};
 

@@ -26,7 +26,7 @@ public class RecetaAlta extends ActionBarActivity {
 
     }
     public void AltaReceta(View v){
-        SQL sql = new SQL(this,"CabinetDB", null,4);
+        SQL sql = new SQL(this,"CabinetDB", null,8);
         final SQLiteDatabase db = sql.getWritableDatabase();
         name=nombre.getText().toString();
         days=Integer.parseInt(duracion.getText().toString());

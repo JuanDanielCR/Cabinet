@@ -22,4 +22,5 @@
     <string name="title_activity_medicamento_alta">MedicamentoAlta</string>
     <string name="title_activity_horario_alta">horarioAlta</string>
     <string name="title_activity_medica_perfil">medicaPerfil</string>
+    <string name="title_activity_notificacion">notificacionA</string>
 </resources>

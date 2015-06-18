@@ -97,36 +97,6 @@
         android:layout_marginLeft="15dp"
         android:id="@+id/textView27" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="1. Agrega los medicamentos que necesitarás"
-        android:layout_marginLeft="15dp"
-        android:textSize="14dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/textView25" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="2. Asocia la receta a un usuario, es necesario tener usuarios dados de alta*"
-        android:layout_marginLeft="15dp"
-        android:textSize="14dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/textView26" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="3. Cuando la receta este completa, selecciona un usuario y activala"
-        android:layout_marginLeft="15dp"
-        android:textSize="14dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/textView28" />
-
     <com.example.juandaniel.cabinet.SlidingTabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"

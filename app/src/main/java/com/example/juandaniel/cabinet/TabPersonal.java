@@ -63,7 +63,7 @@ public class TabPersonal extends Fragment {
     private ArrayList<usuario> obtenerItems() {
         ArrayList<usuario> items = new ArrayList<usuario>();
 
-        SQL sql = new SQL(context,"CabinetDB", null, 4);
+        SQL sql = new SQL(context,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_usuario","nombre", "paterno","materno","edad","sexo","estado"};
 

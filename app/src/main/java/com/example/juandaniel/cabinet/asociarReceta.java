@@ -50,7 +50,7 @@ public class asociarReceta extends ActionBarActivity {
                                     long arg3){
                 TextView usuario=(TextView) v.findViewById(R.id.id_user);
                 id_usuario=usuario.getText().toString();
-                SQL sql = new SQL(context,"CabinetDB",null, 4);
+                SQL sql = new SQL(context,"CabinetDB",null, 8);
 
                 SQLiteDatabase db_valida=sql.getReadableDatabase();
                 String[] campos = {"id_receta", "id_usuario", "estado"};
@@ -92,7 +92,7 @@ public class asociarReceta extends ActionBarActivity {
     private ArrayList<usuario> obtenerItems() {
         ArrayList<usuario> items = new ArrayList<usuario>();
 
-        SQL sql = new SQL(context,"CabinetDB", null, 4);
+        SQL sql = new SQL(context,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_usuario","nombre", "paterno","materno","edad","sexo","estado"};
 

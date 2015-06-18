@@ -58,7 +58,27 @@
                 android:id="@+id/layouttime">
 
                 </LinearLayout>
-
+            <com.example.juandaniel.cabinet.FButton
+                fbutton:buttonColor="@color/fbutton_color_emerald"
+                fbutton:shadowColor="@color/fbutton_color_nephritis"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="6dp"
+                fbutton:paddingEnd="15dp"
+                fbutton:paddingStart="15dp"
+                fbutton:cornerRadius="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:onClick="AgregarHorarios"
+                android:textColor="@color/fbutton_color_clouds"
+                android:text="Agregar"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/view2"
+                android:layout_gravity="center_horizontal" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

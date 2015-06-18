@@ -54,7 +54,7 @@ public class adapterAsociacion  extends BaseAdapter {
         String id_s =String.valueOf(id);
         TextView nombre = (TextView) vi.findViewById(R.id.asocianombre);
 
-            SQL sql = new SQL(context,"CabinetDB", null, 4);
+            SQL sql = new SQL(context,"CabinetDB", null, 8);
             final SQLiteDatabase db = sql.getReadableDatabase();
 
             String[] campos = {"id_usuario", "nombre","paterno","materno"};

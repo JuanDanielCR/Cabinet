@@ -59,7 +59,7 @@ public class contactoPerfil extends ActionBarActivity {
         setSupportActionBar(toolbar);
     }
     public void MandarDatos(){
-        SQL sql = new SQL(this,"CabinetDB", null, 4);
+        SQL sql = new SQL(this,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_contacto", "nombre", "paterno","materno","numero","correo","prioridad","estado"};
 
@@ -82,7 +82,7 @@ public class contactoPerfil extends ActionBarActivity {
     }
 
     public void BorrarContacto(View view){
-        SQL SQlite= new SQL(this,"CabinetDB",null,4);
+        SQL SQlite= new SQL(this,"CabinetDB",null,8);
         final SQLiteDatabase db= SQlite.getWritableDatabase();
 
         if(db != null) {
@@ -95,10 +95,11 @@ public class contactoPerfil extends ActionBarActivity {
         }
         Intent inte= new Intent(this,CabientProfile.class);
         startActivity(inte);
+        finish();
     }
 
     public void ModificarContacto(View view){
-        SQL auxiliar= new SQL(this,"CabinetDB",null,4);
+        SQL auxiliar= new SQL(this,"CabinetDB",null,8);
         final SQLiteDatabase db=auxiliar.getWritableDatabase();
         name=nombre.getText().toString();
         paterno=papa.getText().toString();
@@ -126,10 +127,12 @@ public class contactoPerfil extends ActionBarActivity {
         }
         Intent inte= new Intent(this,CabientProfile.class);
         startActivity(inte);
+        finish();
     }
 
     public void AgregarContactoVolver(View v){
         Intent inicio= new Intent(this ,CabinetAltaContacto.class);
         startActivity(inicio);
+        finish();
     }
 }

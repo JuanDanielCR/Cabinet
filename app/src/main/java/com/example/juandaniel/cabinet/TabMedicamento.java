@@ -65,14 +65,14 @@ public class TabMedicamento extends Fragment {
     }
     //Metodo para crear cada item desde la base
     public ArrayList<receta_med> obteneritems(){
-        ArrayList<receta_med> contacts = new ArrayList<>();
+        ArrayList<receta_med> meds = new ArrayList<>();
 
-        SQL sql = new SQL(context,"CabinetDB", null, 4);
+        SQL sql = new SQL(context,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_receta","id_medicamento"};
 
-        Cursor selectAll = db.query("recetas_medicamentos", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
-
+        Cursor selectAll = db.query("receta_medicamento", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
+        int aux;//variabe para traer solo el primer medicamento
         int Total = selectAll.getCount();
         if(Total==0){
             estado.setText("No tienes medicamentos agregados a esta receta");
@@ -80,10 +80,12 @@ public class TabMedicamento extends Fragment {
             estado.setText("Medicamentos Registrados: \n");
             for (int i = 1; i <= Total; i++) {
                 selectAll.moveToNext();
-                contacts.add(new receta_med(selectAll.getInt(0), selectAll.getInt(1)));
+                meds.add(new receta_med(selectAll.getInt(0), selectAll.getInt(1)));
+                ////aqui hago otra consulta para mandra un array de medicamentos
             }
             db.close();
         }
-        return contacts;
+        return meds;
     }
+    //Erro
 }

@@ -65,7 +65,7 @@ public class TabContacto extends Fragment {
     public ArrayList<contacto> obteneritems(){
         ArrayList<contacto> contacts = new ArrayList<>();
 
-        SQL sql = new SQL(context,"CabinetDB", null, 4);
+        SQL sql = new SQL(context,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_contacto", "nombre", "paterno","materno","numero","correo","prioridad","estado"};
 

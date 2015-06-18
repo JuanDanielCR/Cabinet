@@ -57,10 +57,12 @@ public class CabientProfile extends ActionBarActivity {
     }
     public void AgregarUsuario(View v){
         Intent inicio= new Intent(this ,CabinetAlta.class);
+        finish();
         startActivity(inicio);
     }
     public void AgregarContacto(View v){
         Intent inicio= new Intent(this ,CabinetAltaContacto.class);
+        finish();
         startActivity(inicio);
     }
 

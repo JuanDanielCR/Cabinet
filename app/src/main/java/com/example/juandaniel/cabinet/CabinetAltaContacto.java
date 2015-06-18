@@ -48,7 +48,7 @@ public class CabinetAltaContacto extends ActionBarActivity {
         setSupportActionBar(toolbar);
     }
     public void AgregarContactoDB(View view){
-        SQL sql = new SQL(this,"CabinetDB", null, 4);
+        SQL sql = new SQL(this,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getWritableDatabase();
         name=nombre.getText().toString();
         paterno=papa.getText().toString();

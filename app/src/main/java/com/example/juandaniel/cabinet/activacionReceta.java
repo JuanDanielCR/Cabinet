@@ -1,6 +1,9 @@
 package com.example.juandaniel.cabinet;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,18 +17,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 
 public class activacionReceta extends ActionBarActivity {
-    TextView datos2;
+    TextView datos2,prueba;
     int activacion;
+    long id_pendiente=0;
     String id_receta,id_usuario;
     Button activo;
+    Calendar calendar;
+    private int pendiente=1;
     private static int id_btn=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activacion_receta);
         datos2=(TextView)findViewById(R.id.activacion);
+        prueba=(TextView)findViewById(R.id.prueba);
         setToolbar();
         Bundle recibo;
         recibo=this.getIntent().getExtras();
@@ -57,11 +66,11 @@ public class activacionReceta extends ActionBarActivity {
 
     public int activacion(){
         activacion=0;
-        SQL sql = new SQL(this,"CabinetDB", null, 4);
+        SQL sql = new SQL(this,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_receta","id_medicamento"};
 
-        Cursor selectAll = db.query("recetas_medicamentos", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
+        Cursor selectAll = db.query("notificaciones", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
 
         int Total = selectAll.getCount();
         if(Total==0){
@@ -74,7 +83,7 @@ public class activacionReceta extends ActionBarActivity {
     }
 
     public void desvincular(View view){
-        SQL SQlite= new SQL(this,"CabinetDB",null,4);
+        SQL SQlite= new SQL(this,"CabinetDB",null,8);
         final SQLiteDatabase db= SQlite.getWritableDatabase();
 
         if(db != null) {
@@ -90,21 +99,105 @@ public class activacionReceta extends ActionBarActivity {
     }
 
     public void activar(){
-        SQL auxiliar= new SQL(this,"CabinetDB",null,4);
-        final SQLiteDatabase db=auxiliar.getWritableDatabase();
+        SQL auxiliar= new SQL(this,"CabinetDB",null,8);
+        final SQLiteDatabase dba=auxiliar.getWritableDatabase();
+        final SQLiteDatabase dbc=auxiliar.getReadableDatabase();
+        /*
+        * 1-Obtener id_medicamento de id_receta.
+        * 2-Obtener horario, tavla notificacion
+        * 3-Hacer un intent con la union id_receta-medicamento(nombre), nombre_usuario como nombre----para poder apagar la alarma quietar el pending intent
+        * 4-En el intent mandar id_medicamento para mostrar su progreso----crear activity para mostrar el proyecto, insertar un cambio de estado solo a una fila
+        * 5-Crear alarmmanager para poder ver cada registro
+        * */
+        String[] valido={"estado"};
+        Cursor activo = dbc.query("recetas_catalogo", valido,"id_receta=? and id_usuario=?", new String[]{id_receta, id_usuario}, null, null, null);
+        int helper_activo=activo.getCount();
+        if(helper_activo!=0){
+            for (int z = 1; z <= helper_activo; z++) {
+                activo.moveToNext();
+            if(activo.getInt(0)==1){
+                Toast.makeText(this,"La receta ya esta activa!", Toast.LENGTH_LONG).show();
+            }
+        else {
+                String[] campos = {"id_receta", "id_medicamento"};
+                String[] horarios = {"hora", "minuto","id_notificacion"};
+                //Intent
+                Intent alertIntent = new Intent(this, receiver.class);
+                alertIntent.putExtra("id_receta", id_receta);
 
-        ContentValues datos = new ContentValues();
-        datos.put("estado", 1);
-        if(db != null){
-            try {
-                db.update("recetas_catalogo", datos, "id_usuario=?", new String[]{id_usuario});
-                Toast.makeText(this, "La receta ha sido activada, ahora recibirás las notificaciones que creaste!", Toast.LENGTH_LONG).show();
-            }catch (Exception e){
-                Toast.makeText(getApplicationContext(),"Cabinet: 'No se pudieron actualizar los datos ' " + e,Toast.LENGTH_LONG).show();
+
+                //Alarm manager
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+                ContentValues intencion = new ContentValues();
+                intencion.put("id_receta", Integer.parseInt(id_receta));
+
+
+
+                Cursor selectAll = dbc.query("receta_medicamento", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
+
+                int Total = selectAll.getCount();
+                if (Total != 0) {
+                    for (int i = 1; i <= Total; i++) {
+                        selectAll.moveToNext();
+                        /////
+                        prueba.append("Medicamento: \n");
+                        /////
+                        int id_medicamento = selectAll.getInt(1);
+                        String id_med = String.valueOf(id_medicamento);
+                    //Envio otra ves en el intent
+                        alertIntent.putExtra("id_medicamento", id_med);
+
+                        Cursor alarmas = dbc.query("notificaciones", horarios, "id_medicamento=?", new String[]{id_med}, null, null, null);
+                        int total2 = alarmas.getCount();
+                        if (total2 != 0) {
+                            for (int j = 1; j <= total2; j++) {
+                                alarmas.moveToNext();
+                                calendar = Calendar.getInstance();
+
+                                calendar.set(Calendar.HOUR_OF_DAY, alarmas.getInt(0)); // For 1 PM or 2 PM
+                                calendar.set(Calendar.MINUTE, alarmas.getInt(1));
+                                //Envio otra vez del id_notificacion
+                                alertIntent.putExtra("id_notificacion", alarmas.getInt(2));
+
+                                //Crear una tabla con id_usuario-id_notificacion aqui hago el insert y nevio al intent el id_usuario para recuperarlo y mostrar la info
+
+                                try{
+                                    id_pendiente=dba.insert("intents", null, intencion);
+                                }catch (Exception e){Toast.makeText(getApplicationContext(),"Error en Insert " + e,Toast.LENGTH_LONG).show();}
+                                //Intent
+                                PendingIntent pendiente = PendingIntent.getBroadcast(this, (int) (long)id_pendiente, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmManager.INTERVAL_DAY, pendiente);
+
+                                String p = String.valueOf(alarmas.getInt(0));
+                                String p2 = String.valueOf(alarmas.getInt(1));
+                                prueba.append("Hora: " + p + " Minuto: " + p2 + "\n");
+                            }
+                        }
+                    }
+                }
+
+                ContentValues agregar = new ContentValues();
+                agregar.put("id_usuario", id_usuario);
+                agregar.put("id_receta", id_receta);
+                agregar.put("estado", 1);
+                try {
+                    dba.update("recetas_catalogo", agregar, "id_receta=? and id_usuario=?", new String[]{id_receta, id_usuario});
+                } catch (Exception e) {
+                    System.out.print(e.toString());
+                    Toast.makeText(this, "recetas_catalogo error1 en el update", Toast.LENGTH_SHORT).show();
+                }
+                dbc.close();
+                dba.close();
+                Toast.makeText(this, "Receta Activada, ahora recibirás las notificaciones!", Toast.LENGTH_LONG).show();
+                Intent inte = new Intent(this, home.class);
+                startActivity(inte);
+                finish();
             }
         }
-        Intent inte= new Intent(this,home.class);
-        startActivity(inte);
+  }else{
+             Toast.makeText(this,"recetas_catalogo error2",Toast.LENGTH_SHORT).show();
+         }
     }
 
     public void setToolbar(){
@@ -112,7 +205,7 @@ public class activacionReceta extends ActionBarActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setTitle("CABINET");
         toolbar.setSubtitleTextColor(Color.WHITE);
-        toolbar.setSubtitle("Inicio");
+        toolbar.setSubtitle("Activación de notificaciones");
         toolbar.setLogo(R.mipmap.logo);
         setSupportActionBar(toolbar);
     }
