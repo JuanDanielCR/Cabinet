@@ -17,11 +17,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
+//actividad para activar unir una receta con algun usuario dado de alta
 public class asociarReceta extends ActionBarActivity {
+
+    //Variables para tener acceso a la vista
     Context context;
     TextView data;
+
+    //variables para la logica
     String id,id_usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,16 +36,16 @@ public class asociarReceta extends ActionBarActivity {
         Bundle recibo;
         recibo=this.getIntent().getExtras();
         id=recibo.getString("id_receta");
-
+//Obteniendo el acceso a los widgets de la vista
         data=(TextView)findViewById(R.id.data);
         context=this;
-        //ListView
+//ListView
         ListView lv = (ListView)findViewById(R.id.listasocia);
-
+//Obteniendo un arraylist atraves del metodo obtenerItems
         ArrayList<usuario> itemsCompra = obtenerItems();
-
+//Instanciando el adaptador que llenara el listview con datos
         adapterUser adapter = new adapterUser(this, itemsCompra);
-
+//niendo el arraylis y el adaptador
         lv.setAdapter(adapter);
         lv.setClickable(true);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -51,7 +56,7 @@ public class asociarReceta extends ActionBarActivity {
                 TextView usuario=(TextView) v.findViewById(R.id.id_user);
                 id_usuario=usuario.getText().toString();
                 SQL sql = new SQL(context,"CabinetDB",null, 8);
-
+//consultando bd
                 SQLiteDatabase db_valida=sql.getReadableDatabase();
                 String[] campos = {"id_receta", "id_usuario", "estado"};
 
@@ -79,7 +84,7 @@ public class asociarReceta extends ActionBarActivity {
             }
         });
     }
-
+//metodo para configurar una barra material design
     public void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -89,6 +94,7 @@ public class asociarReceta extends ActionBarActivity {
         toolbar.setLogo(R.mipmap.logo);
         setSupportActionBar(toolbar);
     }
+//metodo que obtendra los datos para llenar el listview y los guardara en un arraylist
     private ArrayList<usuario> obtenerItems() {
         ArrayList<usuario> items = new ArrayList<usuario>();
 
@@ -106,6 +112,7 @@ public class asociarReceta extends ActionBarActivity {
             for (int i = 1; i <= Total; i++) {
                 selectAll.moveToNext();
                 if(selectAll.getInt(6)==1){
+//los datos del arraylist se guardan en un objeto
                     items.add(new usuario(selectAll.getString(1),selectAll.getString(2),selectAll.getString(3),selectAll.getInt(4),selectAll.getString(5),selectAll.getInt(0)));
                 }
             }

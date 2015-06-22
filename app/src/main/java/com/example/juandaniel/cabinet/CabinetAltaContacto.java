@@ -12,16 +12,17 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-
+//Clase para dar de alta contacto en la BD
 public class CabinetAltaContacto extends ActionBarActivity {
 
     String name;
     String paterno;
     String materno;
+    String correo;
     long telefono=0;
     int estado=1;
-    String correo;
     int prioridad=0;
+
     EditText nombre,papa,mama,phone,mail;
     RatingBar priority;
 
@@ -29,11 +30,12 @@ public class CabinetAltaContacto extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cabinet_alta_contacto);
+
         nombre=(EditText)findViewById(R.id.txtName);
         papa=(EditText)findViewById(R.id.txtPaterno);
         mama=(EditText)findViewById(R.id.txtMaterno);
         phone=(EditText)findViewById(R.id.Telefono);
-       mail=(EditText)findViewById(R.id.Correo);
+        mail=(EditText)findViewById(R.id.Correo);
         priority=(RatingBar)findViewById(R.id.Prioridad);
         setToolbar();
     }

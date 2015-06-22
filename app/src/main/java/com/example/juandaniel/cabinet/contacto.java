@@ -3,6 +3,7 @@ package com.example.juandaniel.cabinet;
 /**
  * Created by Juan Daniel on 12/06/2015.
  */
+//Clase contacto
 public class contacto {
     String nombre,paterno,materno,correo;
     int estado,numero,prioridad;

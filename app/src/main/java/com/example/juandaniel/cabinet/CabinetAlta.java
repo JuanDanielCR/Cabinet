@@ -12,14 +12,17 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-
+//Clase para dar de alta usuario en la BD
 public class CabinetAlta extends ActionBarActivity {
+
+//variables para la logica
     String name;
     String paterno;
     String materno;
-    int edad=0;
     String sexo;
+    int edad=0;
     int estado=1;
+//Variables para tener acceso a la vista
     EditText nombre,papa,mama,años;
     Switch sex;
 
@@ -28,6 +31,7 @@ public class CabinetAlta extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cabinet_alta);
         setToolbar();
+//Obteniendo el acceso a los widgets de la vista
         nombre=(EditText)findViewById(R.id.txtName);
         papa=(EditText)findViewById(R.id.txtPaterno);
         mama=(EditText)findViewById(R.id.txtMaterno);
@@ -38,7 +42,7 @@ public class CabinetAlta extends ActionBarActivity {
 
     }
     public void AgregarUsuarioDB(View view){
-
+//Usando la bd e insertando un nuevo usuario
 	    SQL sql = new SQL(this,"CabinetDB", null, 8);
 	    final SQLiteDatabase db = sql.getWritableDatabase();
             name=nombre.getText().toString();

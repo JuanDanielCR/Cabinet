@@ -14,12 +14,15 @@ import java.util.ArrayList;
 /**
  * Created by Juan Daniel on 16/06/2015.
  */
+//El adapter es un clase que sirve para llenar listas de contenido con alguna fuentes de datos, en este caso la fuente de datos
+//es un consulta a la BD por eso extiende de Base Adapter
 public class adapterMedicamento extends BaseAdapter {
 
     protected Context context;
     protected ArrayList<receta_med> parametros;
     String id_receta;
 
+    //Constructor que recibe el contexto para poder imprimir, y un arrarylist con los parametros con los que llenare la vista
     public  adapterMedicamento(Context context ,ArrayList<receta_med> params){
         this.context=context;
         this.parametros=params;
@@ -43,14 +46,14 @@ public class adapterMedicamento extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi=convertView;
-
+//Obteniendo la vista del listView que voy a llenar
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             vi = inflater.inflate(R.layout.itemmedicamentos, null);
         }
-
+//Obteniendo cada parametro del arraylist
         receta_med item = parametros.get(position);
-
+//Guardando los datos en variables
         int id=item.getid_medicamento();
 
         String id_medica =String.valueOf(id);
@@ -67,14 +70,16 @@ public class adapterMedicamento extends BaseAdapter {
         if(Total!=0) {
             for(int i=1; i<=Total; i++) {
                 selectAll.moveToNext();
+//Enviando los datos ncesarios a las vista para que se impriman
                 nombre.setText(selectAll.getString(1));
                 dosis.setText(selectAll.getString(2));
             }
             db.close();
         }
-
+//Enviando los datos ncesarios a las vista para que se impriman
         TextView ids= (TextView)vi.findViewById(R.id.id_enviaasocia);
         ids.setText(id_medica);
+//Regresando una vista ya con datos
         return vi;
     }
 }

@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Juan Daniel on 07/06/2015.
  */
 public class SQL extends SQLiteOpenHelper {
+    //Strings que contienen las tablas de la base de datos, cada string contiene un query a ejecutar
+
     //catalogo usuario-receta
     String tableCatalogo="CREATE TABLE recetas_catalogo(id_receta INTEGER NOT NULL, id_usuario INTEGER NOT NULL, estado INTEGER NOT NULL);";
     //catalogo medicamento-horario
@@ -33,6 +35,8 @@ public class SQL extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //db.execSQL nos permite ejecutar cualquier query sql, en este caso se ejecutan los querys de arriba
+        //Esto nos permite crear la bd cuando sea necesario
         db.execSQL(tableRecetas);
         db.execSQL(tableMedicamentos);
         db.execSQL(tableAlerta);
@@ -47,7 +51,10 @@ public class SQL extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-// Drop older table if existed
+        //Este metodo es llamado para cambiar la version de la base de datos
+        //Eliminamos todas las tablas que qeuramos y volvemos a crear
+
+        //Eliminando tablas
         db.execSQL("DROP TABLE IF EXISTS recetas;" );
         db.execSQL("DROP TABLE IF EXISTS recetas_catalogo;" );
         db.execSQL("DROP TABLE IF EXISTS receta_medicamento;" );
@@ -55,6 +62,7 @@ public class SQL extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS notificaciones;" );
         db.execSQL("DROP TABLE IF EXISTS intents;" );
         db.execSQL("DROP TABLE IF EXISTS notiusuario;");
+        //Creando tablas de nuevo
         db.execSQL(tableRecetas);
         db.execSQL(tableMedicamentos);
         db.execSQL(tableNotificacion);

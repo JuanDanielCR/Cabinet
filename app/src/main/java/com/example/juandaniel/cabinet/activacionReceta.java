@@ -19,39 +19,57 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-
+//actividad para activar una receta y que comienze a generar notifiaciones para el usuario
 public class activacionReceta extends ActionBarActivity {
-    TextView datos2,prueba;
+
+    //variables para la logica
+    private int pendiente=1;
+    private static int id_btn=1;
     int activacion;
     long id_pendiente=0;
+    //Variables para tener acceso a la vista
+    TextView datos2,prueba;
     String id_receta,id_usuario;
     Button activo;
     Calendar calendar;
-    private int pendiente=1;
-    private static int id_btn=1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activacion_receta);
+
+        //Obteniendo el acceso a los widgets de la vista
         datos2=(TextView)findViewById(R.id.activacion);
         prueba=(TextView)findViewById(R.id.prueba);
+
+        //instancia del metodo que provee la barra de material design
         setToolbar();
+
+        //Obteniendo la instancia de bundle para recibir datos de la actividad anterior
         Bundle recibo;
         recibo=this.getIntent().getExtras();
 
+        //Guardando el id_receta y id_usuario que recibimos
         id_receta=recibo.getString("id_receta");
         id_usuario=recibo.getString("id_usuario");
 
+        //La variable activación recibe un 1 o un 0 dependiendo del metodo activación();
         activacion=activacion();
+
+        //Si activacion es igual a uno se crea un boton que nos permitira activar la receta
+        //Si activación es iagual a cero el boton no se crea y se pinta n mensaje indicando lo qe falta.
         if(activacion==1){
             datos2.setText("Ahora puedes activar tu receta. \n");
+            //Obteniendo el layout donde pintare el boton
             LinearLayout layout = (LinearLayout) findViewById(R.id.buttondinamic);
             Button btnTag = new Button(this);
             btnTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             btnTag.setText("Activar");
             btnTag.setId(1 * 2);
+            //Agregando el boton
             layout.addView(btnTag);
             activo=(Button) findViewById(1*2);
+            //Agregando el listener para indicar la acción al hacer click en el boton
             activo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -63,25 +81,30 @@ public class activacionReceta extends ActionBarActivity {
         }
     }
 
-
+    //metodo que regresa 1 si la BD cuenta con la info necesaria para crear notificaciones
+    //regrsa o si faltan medicamentos o usuarios
     public int activacion(){
         activacion=0;
+        //Instancia de SQLiteOpenHelper
         SQL sql = new SQL(this,"CabinetDB", null, 8);
         final SQLiteDatabase db = sql.getReadableDatabase();
         String[] campos = {"id_receta","id_medicamento"};
 
+        //Consulta a la tabla de notifaiciones en donde se manda el id de la receta que consultaremos
         Cursor selectAll = db.query("notificaciones", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
 
         int Total = selectAll.getCount();
         if(Total==0){
+            //Si no hay datos en la tabla regresa 0
             activacion=0;
         }else {
+            //Si hay datos regresa un 1
             activacion=1;
-            db.close();
         }
+        db.close();
         return activacion;
     }
-
+    //metodo que quita la relacion entre un usuario y una receta
     public void desvincular(View view){
         SQL SQlite= new SQL(this,"CabinetDB",null,8);
         final SQLiteDatabase db= SQlite.getWritableDatabase();
@@ -121,18 +144,17 @@ public class activacionReceta extends ActionBarActivity {
         else {
                 String[] campos = {"id_receta", "id_medicamento"};
                 String[] horarios = {"hora", "minuto","id_notificacion"};
-                //Intent
+
+                //Intent que indica que pasara cuando le des click a una notifiacion
                 Intent alertIntent = new Intent(this, receiver.class);
                 alertIntent.putExtra("id_receta", id_receta);
 
 
-                //Alarm manager
+                //Alarm manager obtiene un servicio del sistema de tipo alarma
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
                 ContentValues intencion = new ContentValues();
                 intencion.put("id_receta", Integer.parseInt(id_receta));
-
-
 
                 Cursor selectAll = dbc.query("receta_medicamento", campos, "id_receta=?", new String[]{id_receta}, null, null, null);
 
@@ -145,7 +167,7 @@ public class activacionReceta extends ActionBarActivity {
                         /////
                         int id_medicamento = selectAll.getInt(1);
                         String id_med = String.valueOf(id_medicamento);
-                    //Envio otra ves en el intent
+                    //Envio otra ves en el intent con el id del medicamento para saber que medicamento se tomo en la notificacion creada
                         alertIntent.putExtra("id_medicamento", id_med);
 
                         Cursor alarmas = dbc.query("notificaciones", horarios, "id_medicamento=?", new String[]{id_med}, null, null, null);
@@ -153,10 +175,12 @@ public class activacionReceta extends ActionBarActivity {
                         if (total2 != 0) {
                             for (int j = 1; j <= total2; j++) {
                                 alarmas.moveToNext();
+                                //Creación de un calendar qe nos permitira castear un valor de tipo a un valor de una fecha
                                 calendar = Calendar.getInstance();
 
-                                calendar.set(Calendar.HOUR_OF_DAY, alarmas.getInt(0)); // For 1 PM or 2 PM
+                                calendar.set(Calendar.HOUR_OF_DAY, alarmas.getInt(0));
                                 calendar.set(Calendar.MINUTE, alarmas.getInt(1));
+
                                 //Envio otra vez del id_notificacion
                                 alertIntent.putExtra("id_notificacion", alarmas.getInt(2));
 
@@ -165,7 +189,8 @@ public class activacionReceta extends ActionBarActivity {
                                 try{
                                     id_pendiente=dba.insert("intents", null, intencion);
                                 }catch (Exception e){Toast.makeText(getApplicationContext(),"Error en Insert " + e,Toast.LENGTH_LONG).show();}
-                                //Intent
+
+                                //Intent que sera llamado cuando se lanze el alarm manager
                                 PendingIntent pendiente = PendingIntent.getBroadcast(this, (int) (long)id_pendiente, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmManager.INTERVAL_DAY, pendiente);
 
@@ -181,6 +206,7 @@ public class activacionReceta extends ActionBarActivity {
                 agregar.put("id_usuario", id_usuario);
                 agregar.put("id_receta", id_receta);
                 agregar.put("estado", 1);
+                //Agregando a un usuario y una receta como activos al catalogo para que comienze a dar notificaciones
                 try {
                     dba.update("recetas_catalogo", agregar, "id_receta=? and id_usuario=?", new String[]{id_receta, id_usuario});
                 } catch (Exception e) {

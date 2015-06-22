@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 
-
+//Clase donde solo abra imagenes para poder decirle al usuario que hacer en la app, sera como un manual
 public class CabinetTour extends ActionBarActivity {
 
     @Override
